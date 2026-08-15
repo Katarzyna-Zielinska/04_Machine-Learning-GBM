@@ -28,40 +28,22 @@ After probe annotation and aggregation to gene level, 22,189 genes were availabl
 The original GEO data are not included in this repository.
 
 Workflow
-GSE4290
-   │
-   ▼
-Sample selection
-GBM vs Non-Tumor
-   │
-   ▼
-Probe-level expression data
-   │
-   ▼
-GPL570 annotation
-   │
-   ▼
-Probe → Gene mapping
-   │
-   ▼
-Gene-level expression matrix
-   │
-   ▼
-Feature selection
-Top 100 genes
-   │
-   ├───────────────┐
-   ▼               ▼
-Logistic        Random
-Regression      Forest
-   │               │
-   └───────┬───────┘
-           ▼
-     Model evaluation
-           │
-           ▼
-  5-fold stratified
-   cross-validation
+flowchart TD
+    A[GSE4290<br/>100 samples] --> B[Select GBM and Non-Tumor samples]
+    B --> C[Probe-level expression<br/>54,613 probes]
+    C --> D[GPL570 annotation]
+    D --> E[Probe → Gene mapping]
+    E --> F[Gene-level expression<br/>22,189 genes]
+    F --> G[Feature selection<br/>Top 100 genes]
+    G --> H[Train/Test Split]
+
+    H --> I[Logistic Regression]
+    H --> J[Random Forest]
+
+    I --> K[Model Evaluation]
+    J --> K
+
+    K --> L[5-fold Stratified<br/>Cross-Validation]
 
 Methods
 Data Preparation
