@@ -62,6 +62,7 @@ Regression      Forest
            ▼
   5-fold stratified
    cross-validation
+
 Methods
 Data Preparation
 
@@ -167,6 +168,7 @@ Data source
 NCBI GEO
 GSE4290
 GPL570
+
 Repository Structure
 04_Machine-Learning-GBM/
 │
@@ -197,28 +199,22 @@ Repository Structure
     ├── 03_train_models.py
     ├── 04_evaluate_models.py
     └── 05_external_validation.py
+
 Reproducibility
-
 Create the project environment:
-
 conda create -n ml-gbm python=3.11
 conda activate ml-gbm
-
 Install the required packages:
-
 pip install pandas numpy scikit-learn matplotlib seaborn pyyaml
-
 Download the GSE4290 expression matrix and GPL570 annotation from NCBI GEO and place them in:
-
 data/raw/
-
 Run the analysis sequentially:
-
 python scripts/01_prepare_data.py
 python scripts/02_feature_selection.py
 python scripts/03_train_models.py
 python scripts/04_evaluate_models.py
 python scripts/05_external_validation.py
+
 Limitations
 
 The dataset contains only 100 samples, with an unequal number of GBM and non-tumor samples.
